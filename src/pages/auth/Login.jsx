@@ -36,7 +36,7 @@ function Login() {
         className="bg-white p-6 rounded shadow w-full max-w-sm"
       >
         <h2 className="text-2xl font-bold text-center mb-4">
-          Login
+          Logins
         </h2>
 
         {/* Email */}
