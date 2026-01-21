@@ -14,14 +14,17 @@ function Login() {
   const submit = async (e) => {
     e.preventDefault()
     try {
-      const user = await login(email, password)
-
+      const user = await API.post("/auth/login",{email, password,})
+      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("user", JSON.stringify(res.data.user))
+      
       if (user.role === "admin") navigate("/admin/dashboard")
       else if (user.role === "professor")
         navigate("/professor/dashboard")
       else navigate("/student/dashboard")
-    } catch (err) {
-      alert("Invalid credentials")
+    }catch (err) {
+    console.log(err.response?.data)
+    alert(err.response?.data?.message || "Login failed")
     }
   }
 
